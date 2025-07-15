@@ -1,0 +1,43 @@
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title"> Add a New Person</h2>
+        <form [formGroup]="postPersonForm">
+            <!-- Send Address as a String -->
+            <!-- <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" formControlName="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" formControlName="email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" formControlName="address" required>
+            </div>
+            <button type="submit" (click)="postPerson()">Add</button> -->
+
+            <!-- To send Address as an Object type -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input formControlName="name" placeholder="Full Name" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input formControlName="email" placeholder="123@xyz.com" />
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <span formGroupName="address">
+                    <!-- <input formControlName="street" placeholder="Street" /> -->
+                    <input formControlName="city" placeholder="City" />
+                    <input formControlName="state" placeholder="State" />
+                    <input formControlName="pincode" placeholder="Pincode" />
+                </span>
+            </div>
+
+            <button (click)="postPerson()">Submit</button>
+        </form>
+    </div>
+</div>
