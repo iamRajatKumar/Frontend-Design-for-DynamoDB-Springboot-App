@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './add-person.component.css',
 })
 export class AddPersonComponent {
+
   postPersonForm!: FormGroup;
 
   constructor(

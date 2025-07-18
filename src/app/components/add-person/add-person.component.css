@@ -15,17 +15,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
 }
 
-button{
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-left: 100px;
-    margin-top: 10px;
-}
-
 .form-group{
     margin-top: 15px;
 }
@@ -45,4 +34,27 @@ input{
     margin-top:5px;
     border: 1px solid #ccc;
     border-radius:3px;
+}
+
+.btn-add{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.btn-show{
+    background-color: #ffb700ff;
+    color: black;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 10px;
+    cursor: pointer;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 10px;
 }
