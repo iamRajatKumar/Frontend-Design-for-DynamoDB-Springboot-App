@@ -29,7 +29,7 @@
             <td>{{ i.address?.state }}</td>
             <td>{{ i.address?.pincode }}</td>
             <td>
-                <button class="btn btn-warning" routerLink="/person/{{i.personId}}">Update</button>
+                <button class="btn btn-warning" (click)="editPersonById(i.personId)">Update</button>
             </td>
             <td>
                 <button class="btn btn-danger" (click)="deletePerson(i.personId)">Delete</button>
@@ -53,7 +53,7 @@
 </div> -->
 
 <!-- Modal to show single person details-->
-<div class="custom-modal" *ngIf="selectedPerson" (click)="closeModal()">
+<div class="custom-modal" *ngIf="selectedPerson && !isEditMode" (click)="closeModal()">
     <div class="modal-content" (click)="$event.stopPropagation()">
         <h2>Person Details</h2>
         <hr>
@@ -66,4 +66,82 @@
         <button (click)="closeModal()">Close</button>
     </div>
 
+</div>
+
+<!-- Modal to update person By id -->
+<!-- 
+<div *ngIf="isEditMode" class="modal-backdrop">
+    <div class="modal-box">
+        <h3>Update Person</h3>
+        <form (ngSubmit)="updatePerson()">
+            <label>Name : </label>
+            <input type="text" [(ngModel)]="selectedPerson.name" name="name" required/>
+            <br>
+            <label>Email : </label>
+            <input type="text" [(ngModel)]="selectedPerson.email" name="email" required/>
+            <br>
+            <label>City : </label>
+            <input type="text" [(ngModel)]="selectedPerson.address.districtName" name="city" required/>
+            <br>
+            <label>State : </label>
+            <input type="text" [(ngModel)]="selectedPerson.address.state" name="state" required/>
+            <br>
+            <label>PinCode : </label>
+            <input type="text" [(ngModel)]="selectedPerson.address.pincode" name="pincode" required/>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-success">Update Details</button>
+            
+            <button type="submit" class="btn btn-danger" (click)="isEditMode = false">Cancel</button>
+            
+        </form>
+    </div>
+</div> -->
+
+<!-- Update Person Modal -->
+<div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0, 0, 0, 0.5);" *ngIf="isEditMode">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title">Update Person</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+
+      <form (ngSubmit)="updatePerson()">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Name:</label>
+            <input type="text" [(ngModel)]="selectedPerson.name" name="name" class="form-control" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email:</label>
+            <input type="email" [(ngModel)]="selectedPerson.email" name="email" class="form-control" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">City:</label>
+            <input type="text" [(ngModel)]="selectedPerson.address.districtName" name="city" class="form-control" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">State:</label>
+            <input type="text" [(ngModel)]="selectedPerson.address.state" name="state" class="form-control" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">PinCode:</label>
+            <input type="text" [(ngModel)]="selectedPerson.address.pincode" name="pincode" class="form-control" required />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Update Details</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
 </div>

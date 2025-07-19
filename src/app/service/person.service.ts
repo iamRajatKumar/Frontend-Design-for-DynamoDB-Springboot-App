@@ -26,6 +26,11 @@ export class PersonService {
     return this.http.get(`${BASIC_URL}/person/${id}`);
   }
 
+  //update data on behalf of ID
+  updatePersonById(id: string, person: any): Observable<any>{
+    return this.http.put(`${BASIC_URL}/person/${id}`,person);
+  }
+
   //delete  Person data by Id
   deletePerson(id: String): Observable<any>{
     return this.http.delete(`${BASIC_URL}/person/${id}`, { responseType: 'text' });
