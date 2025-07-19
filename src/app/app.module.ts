@@ -17,7 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
     AddPersonComponent,
     GetPersonComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
