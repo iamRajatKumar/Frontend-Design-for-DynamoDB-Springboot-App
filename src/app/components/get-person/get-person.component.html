@@ -1,12 +1,14 @@
 <h2>All Person Details fetched from Database</h2>
 <hr>
-<table>
-    <thead>
+<table class="table table-striped">
+    <thead class="table-primary">
         <tr>
             <th rowspan="2">Id</th>
             <th rowspan="2">Name</th>
             <th rowspan="2">Email</th>
             <th colspan="3">Address</th>
+            <th rowspan="2">Update</th>
+            <th rowspan="2">Delete</th>
         </tr>
         <tr>
             <th>City</th>
@@ -16,26 +18,31 @@
     </thead>
     <tbody>
         <tr *ngFor="let i of persons">
+            <!-- Open single person details below all the person -->
             <td (click)="getPersonById(i.personId)" style="cursor:pointer; color:blue;">
                 {{i.personId}}
             </td>
+
             <td>{{i.name}}</td>
             <td>{{i.email}}</td>
             <td>{{ i.address?.districtName }}</td>
             <td>{{ i.address?.state }}</td>
             <td>{{ i.address?.pincode }}</td>
             <td>
-                <button class="btn-update" routerLink="/person/{{i.personId}}">Update</button>
+                <button class="btn btn-warning" routerLink="/person/{{i.personId}}">Update</button>
             </td>
             <td>
-                <button class="btn-delete" (click)="deletePerson(i.personId)">Delete</button>
+                <button class="btn btn-danger" (click)="deletePerson(i.personId)">Delete</button>
             </td>
         </tr>
     </tbody>
 </table>
 
+<button class="btn btn-primary" routerLink="/add">Add A New Person</button>
 
-<div *ngIf="selectedPerson">
+
+<!-- Single Person below all person-->
+<!-- <div *ngIf="selectedPerson"> 
     <h3>Seleected Person Details</h3>
     <p><strong>ID:</strong> {{ selectedPerson.personId }}</p>
     <p><strong>Name:</strong> {{ selectedPerson.name }}</p>
@@ -43,4 +50,20 @@
     <p><strong>City:</strong> {{ selectedPerson.address?.districtName }}</p>
     <p><strong>State:</strong> {{ selectedPerson.address?.state }}</p>
     <p><strong>Pincode:</strong> {{ selectedPerson.address?.pincode }}</p>
+</div> -->
+
+<!-- Modal to show single person details-->
+<div class="custom-modal" *ngIf="selectedPerson" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>Person Details</h2>
+        <hr>
+        <p><strong>ID:</strong> {{ selectedPerson.personId }}</p>
+        <p><strong>Name:</strong> {{ selectedPerson.name }}</p>
+        <p><strong>Email:</strong> {{ selectedPerson.email }}</p>
+        <p><strong>City:</strong> {{ selectedPerson.address?.districtName }}</p>
+        <p><strong>State:</strong> {{ selectedPerson.address?.state }}</p>
+        <p><strong>Pincode:</strong> {{ selectedPerson.address?.pincode }}</p>
+        <button (click)="closeModal()">Close</button>
+    </div>
+
 </div>

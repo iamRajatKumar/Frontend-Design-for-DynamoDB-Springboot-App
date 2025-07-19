@@ -31,6 +31,9 @@ export class GetPersonComponent {
     })
   }
 
+  closeModal() {
+    this.selectedPerson = null;
+  }
 
   deletePerson(id: string) {
     this.personService.deletePerson(id).subscribe((response) => {
