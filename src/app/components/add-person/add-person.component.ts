@@ -34,8 +34,8 @@ export class AddPersonComponent {
       name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       address: this.fb.group({
-        street: [''],
-        city: [''],
+        // street: [''],
+        districtName: [''],
         state: [''],
         pincode: ['']
       })
