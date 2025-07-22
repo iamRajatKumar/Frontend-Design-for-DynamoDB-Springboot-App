@@ -23,7 +23,7 @@ export class PersonService {
 
   //get data by Id
   getPersonById(id: string): Observable<any> {
-    return this.http.get(`${BASIC_URL}/person/${id}`);
+    return this.http.get(`${BASIC_URL}/person/${id}`); // `` backtiks
   }
 
   //update data on behalf of ID
